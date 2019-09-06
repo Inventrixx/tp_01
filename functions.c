@@ -1,3 +1,5 @@
+#include "functions.h"
+
 float sum(float a, float b) {
 	float total;
 	total = a + b;
