@@ -4,7 +4,7 @@
 
 int main() {
     int options;
-    char follow = 's';
+    //char follow = 's';
     float A = 0.00;
     float B = 0.00;
     float resultSum;
@@ -14,10 +14,8 @@ int main() {
     int resultFactorialA;
     int resultFactorialB;
     float num1,num2;
-    printf("Bienvenide a la calculadora, se le solicitarÃ¡ dos nÃºmeros:\n");
+    printf("Bienvenide a la calculadora, se le solicitará dos números:\n");
 
-    while(follow == 's')
-    {
         printf("1- Ingresar 1er operando (A=%f)\n", A);
         printf("2- Ingresar 2do operando (B=%f)\n", B);
         printf("3- Calcular los resultados\n");
@@ -35,7 +33,7 @@ int main() {
                 A = num1;
                 break;
             case '2':
-                printf("2do NÃºmero: ");
+                printf("2do Número: ");
                 scanf("%f", &num2);
                 B = num2;
                 break;
@@ -51,9 +49,9 @@ int main() {
             case '4':
                 printf("El resultado de la suma es: %.2f\n", resultSum);
                 printf("El resultado de la resta es: %.2f\n", resultSubtraction);
-                printf("El resultado de la multiplicaciÃ³n es: %.2f\n", resultMultiplication);
+                printf("El resultado de la multiplicación es: %.2f\n", resultMultiplication);
                 printf("El resultado de la division es: %.2f\n", resultDivision);
-                printf("El factorial del primer nÃºmero es: %d y el factorial del segundo es: %d\n\n\n",
+                printf("El factorial del primer número es: %d y el factorial del segundo es: %d\n\n\n",
                        resultFactorialA, resultFactorialB);
                 break;
             case '5':
@@ -62,9 +60,8 @@ int main() {
                 printf("\nGracias por utilizar la calculadora!\nSaliendo del programa...\n");
                 break;
             default:
-                printf("Ingrese una opciÃ³n valida\n");
+                printf("Ingrese una opción valida\n");
         }
-    }
     return 0;
 
 }
