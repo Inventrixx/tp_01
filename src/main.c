@@ -3,7 +3,7 @@
 #include "functions.h"
 
 int main() {
-	setbuf(stdout, NULL);
+setbuf(stdout, NULL);
     int options;
     float A = 0.00;
     float B = 0.00;
@@ -15,7 +15,7 @@ int main() {
     int resultFactorialB;
     float num1,num2;
 
-    printf("Bienvenide a la calculadora, se le solicitará dos números:\n");
+    printf("Bienvenide a la calculadora, se le solicitarÃ¡ dos nÃºmeros:\n");
     printf("\n1- Ingresar primer operando:\n");
     scanf("%f", &A);
     printf("\n2- Ingresar segundo operando:\n");
@@ -37,7 +37,7 @@ while(1) {
 	   A = num1;
 	   break;
 	  case 2:
-	   printf("2do Número: ");
+	   printf("2do NÃºmero: ");
 	   scanf("%f", &num2);
 	   B = num2;
 	   break;
@@ -53,19 +53,19 @@ while(1) {
 	  case 4:
 	   printf("El resultado de la suma es: %.2f\n", resultSum);
 	   printf("El resultado de la resta es: %.2f\n", resultSubtraction);
-	   printf("El resultado de la multiplicación es: %.2f\n", resultMultiplication);
+	   printf("El resultado de la multiplicaciÃ³n es: %.2f\n", resultMultiplication);
 	   printf("El resultado de la division es: %.2f\n", resultDivision);
-	   printf("El factorial del primer número es: %d y el factorial del segundo es: %d\n\n\n",
+	   printf("El factorial del primer nÃºmero es: %d y el factorial del segundo es: %d\n\n\n",
 		 resultFactorialA, resultFactorialB);
 	   break;
 	  case 5:
 	   printf("\nSaliendo del programa...\n");
 	   return 0;
 	  default:
-	   printf("Ingrese una opción valida\n");
+	   printf("Ingrese una opciÃ³n valida\n");
 	   break;
          }
-  printf("\e[1;1H\e[2J");
+  system("cls");
   }
 
 }
