@@ -23,19 +23,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: Tp_01_eclipse.exe
+all: practicando.exe
 
 # Tool invocations
-Tp_01_eclipse.exe: $(OBJS) $(USER_OBJS)
+practicando.exe: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cygwin C Linker'
-	gcc  -o "Tp_01_eclipse.exe" $(OBJS) $(USER_OBJS) $(LIBS)
+	gcc  -o "practicando.exe" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) Tp_01_eclipse.exe
+	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) practicando.exe
 	-@echo ' '
 
 .PHONY: all clean dependents
