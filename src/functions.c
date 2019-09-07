@@ -55,6 +55,9 @@ float division(float a, float b) {
 */
 int factorialA(int a) {
 	int i, factorial = 1;
+		if(a <= 0) {
+			printf("ERROR, debe ingresar un número mayor a 0");
+		}
 	    for (i = 1; i <= a; i++){
 	        factorial = factorial * i;
 	    }
@@ -68,6 +71,9 @@ int factorialA(int a) {
 */
 int factorialB(int b) {
 	int i, factorial = 1;
+		if(b <= 0) {
+			printf("ERROR, debe ingresar un número mayor a 0");
+		}
 	    for (i = 1; i <= b; i++){
 	        factorial = factorial * i;
 	    }
