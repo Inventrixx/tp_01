@@ -159,5 +159,3 @@ int employee_getSueldo(Employee* this,int* sueldo) {
   }
   return ret;
 }
-
-

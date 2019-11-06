@@ -67,6 +67,35 @@ int controller_lastIdEmployee(LinkedList* pArrayListEmployee) {
 	return ret;
 }
 
+/** \brief Obtiene la posicione del id a buscar
+ *
+ * \param pArrayListEmployee LinkedList*
+ * \param int id
+ * \param int* index
+ * \return int
+ *
+ */
+
+int controller_searchEmployeeById(LinkedList* pArrayListEmployee, int id, int* index) {
+	int ret = -1;
+	Employee* auxEmployee;
+	int auxId;
+	int i, len;
+
+	if(pArrayListEmployee != NULL) {
+		len = ll_len(pArrayListEmployee);
+			for(i = 0; i < len; i++) {
+				auxEmployee = (Employee*)ll_get(pArrayListEmployee, i);
+				employee_getId(auxEmployee,&auxId);
+				if(auxId == id) {
+					*index = i;
+					ret = 0;
+				}
+			}
+		}
+	return ret;
+	}
+
 /** \brief Alta de empleados
  *
  * \param path char*
@@ -76,14 +105,14 @@ int controller_lastIdEmployee(LinkedList* pArrayListEmployee) {
  */
 int controller_addEmployee(LinkedList* pArrayListEmployee) {
   int ret = -1;
-  char auxNombre[256];
+  char auxNombre[128];
   int auxHorasTrabajadas;
   int auxSueldo;
   Employee* auxEmployee;
   auxEmployee = employee_new();
   if(pArrayListEmployee != NULL && auxEmployee != NULL) {
 
-    if(utn_getName("Ingrese el nombre", "Error. Ingrese un nombre valido", 1, 127, 2, auxNombre) == 0 && utn_getUnsignedInt("Ingrese la cantidad de horas trabajadas", "Error. Ingrese un valor valido", 1, sizeof(auxHorasTrabajadas), 0, 200, 2, &auxHorasTrabajadas) == 0 && utn_getUnsignedInt("Ingrese el sueldo", "Error. Ingrese un valor valido", 1, sizeof(auxSueldo), 1, 50000, 2, &auxSueldo) == 0) {
+    if(utn_getName("Ingrese el nombre: ", "Error. Ingrese un nombre valido: ", 1, 127, 2, auxNombre) == 0 && utn_getUnsignedInt("Ingrese la cantidad de horas trabajadas: ", "Error. Ingrese un valor valido: ", 1, 10, 0, 200, 2, &auxHorasTrabajadas) == 0 && utn_getUnsignedInt("Ingrese el sueldo: ", "Error. Ingrese un valor valido: ", 1, 10, 1, 50000, 2, &auxSueldo) == 0) {
       employee_setId(auxEmployee, employee_idGenerator());
       employee_setNombre(auxEmployee, auxNombre);
       employee_setHorasTrabajadas(auxEmployee, auxHorasTrabajadas);
@@ -102,9 +131,51 @@ int controller_addEmployee(LinkedList* pArrayListEmployee) {
  * \return int
  *
  */
-int controller_editEmployee(LinkedList* pArrayListEmployee)
-{
-    return 1;
+int controller_editEmployee(LinkedList* pArrayListEmployee) {
+	int ret = -1;
+	if(pArrayListEmployee != NULL) {
+		if(ll_len(pArrayListEmployee)) {
+			char auxNombre[128];
+			int auxHorasTrabajadas;
+			int auxSueldo;
+			Employee* auxEmployee;
+			int option;
+			int auxIndex;
+			int auxId;
+			if(utn_getUnsignedInt("Ingrese el Id del empleado a modificar: ", "Error. Ingrese un Id valido: ", 1, 5, 0, 10000, 2, &auxId) == 0 && controller_searchEmployeeById(pArrayListEmployee, auxId, &auxIndex)) {
+				do {
+					auxEmployee = (Employee*)ll_get(pArrayListEmployee, auxIndex);
+					controller_ListEmployee(pArrayListEmployee, auxIndex);
+					printf("4. Salir");
+					utn_getUnsignedInt("Ingrese el Id del empleado: ", "Error. Ingrese un Id valido: ", 1, 5, 0, 10000, 2, &option);
+
+					switch(option) {
+						case 1:
+							if(utn_getName("Ingrese el nombre: ", "Error. Ingrese un nombre valido: ", 1, 127, 2, auxNombre) == 0) {
+								employee_setNombre(auxEmployee, auxNombre);
+							}
+							break;
+						case 2:
+							if(utn_getUnsignedInt("Ingrese la cantidad de horas trabajadas: ", "Error. Ingrese un valor valido: ", 1, 10, 0, 200, 2, &auxHorasTrabajadas) == 0) {
+								employee_setHorasTrabajadas(auxEmployee, auxHorasTrabajadas);
+							}
+							break;
+						case 3:
+							if(tn_getUnsignedInt("Ingrese el sueldo: ", "Error. Ingrese un valor valido: ", 1, 10, 1, 50000, 2, &auxSueldo) == 0) {
+								employee_setSueldo(auxEmployee, auxSueldo);
+							}
+							break;
+					}
+				} while(option != 4);
+				ret = 0;
+			} else {
+				printf("Id invalido");
+			}
+		} else {
+			printf("No existen registros cargados");
+		}
+	}
+    return ret;
 }
 
 /** \brief Baja de empleado
@@ -143,7 +214,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee) {
 				employee_getNombre(auxEmployee, auxNombre);
 				employee_getHorasTrabajadas(auxEmployee, &auxHorasTrabajadas);
 				employee_getSueldo(auxEmployee, &auxSueldo);
-				printf("%d\n%s\n%d\n%d\n", auxId,auxNombre,auxHorasTrabajadas,auxSueldo);
+				printf("ID: %d\n1.Nombre: %s\n2.Horas trabajadas: %d\n3.Sueldo: %d\n", auxId,auxNombre,auxHorasTrabajadas,auxSueldo);
 			}
 			ret = 0;
 		} else {

@@ -7,10 +7,10 @@
 * \brief Solicita un texto al usuario y lo devuelve
 * \param msg Mensaje a ser mostrado
 * \param msgError Mensaje a ser mostrado en caso de error
-* \param min Cantidad minima de elementos que recibir· el string
-* \param max Cantidad m·xima de elementos que recibir· el string
-* \param reintentos Cantidad de reintentos que el usuario tendr·
-* \param resultado Array donde se cargar· el texto ingresado
+* \param min Cantidad minima de elementos que recibir√° el string
+* \param max Cantidad m√°xima de elementos que recibir√° el string
+* \param reintentos Cantidad de reintentos que el usuario tendr√°
+* \param resultado Array donde se cargar√° el texto ingresado
 * \return 0 si el texto contiene solo letras
 */
 int getString(char* msg, char* msgError, int min, int max, int* reintentos, char* resultado) {
@@ -40,10 +40,10 @@ int getString(char* msg, char* msgError, int min, int max, int* reintentos, char
 * \brief Solicita un texto al usuario y lo devuelve
 * \param msg Mensaje a ser mostrado
 * \param msgError Mensaje a ser mostrado en caso de error
-* \param min Cantidad minima de elementos que recibir· el string
-* \param max Cantidad m·xima de elementos que recibir· el string
-* \param reintentos Cantidad de reintentos que el usuario tendr·
-* \param resultado Array donde se cargar· el texto ingresado
+* \param min Cantidad minima de elementos que recibir√° el string
+* \param max Cantidad m√°xima de elementos que recibir√° el string
+* \param reintentos Cantidad de reintentos que el usuario tendr√°
+* \param resultado Array donde se cargar√° el texto ingresado
 * \return 0 si el texto es un nombre valido
 */
 int utn_getName(char* msg, char* msgError, int min, int max, int reintentos, char* resultado) {
@@ -70,7 +70,7 @@ int utn_getName(char* msg, char* msgError, int min, int max, int reintentos, cha
 }
 
 /**
-* \brief Recibe un string y verifica que estÈ en un rango del teclado (A-Z, a-z)
+* \brief Recibe un string y verifica que est√© en un rango del teclado (A-Z, a-z)
 * \param stringRecibido string a verificar
 * \return 0 si el string esta en un rango valido (A-Z, a-z)
 */
@@ -91,12 +91,12 @@ int isValidName(char* stringRecibido) {
 * \brief Solicita un entero al usuario y lo devuelve
 * \param msg Mensaje a ser mostrado
 * \param msgError Mensaje a ser mostrado en caso de error
-* \param minSize cantidad minimo de elementos que tendr· el array
-* \param maxSize cantidad m·xima de elementos que tendr· el array
-* \param min Cantidad minima de elementos que recibir· el string
-* \param max Cantidad m·xima de elementos que recibir· el string
-* \param reintentos Cantidad de reintentos que el usuario tendr·
-* \param input Array donde se cargar· el texto ingresado
+* \param minSize cantidad minimo de elementos que tendr√° el array
+* \param maxSize cantidad m√°xima de elementos que tendr√° el array
+* \param min Cantidad minima de elementos que recibir√° el string
+* \param max Cantidad m√°xima de elementos que recibir√° el string
+* \param reintentos Cantidad de reintentos que el usuario tendr√°
+* \param input Array donde se cargar√° el texto ingresado
 * \return 0 si efectivamente el numero es un entero
 */
 int utn_getUnsignedInt(char* msg,char* msgError,int minSize,int maxSize,int min,int max,int reintentos,int* input) {
@@ -122,7 +122,7 @@ int utn_getUnsignedInt(char* msg,char* msgError,int minSize,int maxSize,int min,
 }
 
 /**
-* \brief Recibe un string y verifica que estÈ en el rango numerico del teclado (0-9)
+* \brief Recibe un string y verifica que est√© en el rango numerico del teclado (0-9)
 * \param stringRecibido string a verificar
 * \return 0 si el string esta en un rango numerico
 */
@@ -142,8 +142,8 @@ int isValidNumber(char* stringRecibido) {
 * \brief Solicita un texto al usuario y lo devuelve
 * \param msg Mensaje a ser mostrado
 * \param msgError Mensaje a ser mostrado en caso de error
-* \param reintentos Cantidad de reintentos que el usuario tendr·
-* \param input Array donde se cargar· el texto ingresado
+* \param reintentos Cantidad de reintentos que el usuario tendr√°
+* \param input Array donde se cargar√° el texto ingresado
 * \return 0 si el texto es un nombre valido
 */
 int utn_getCUIT(char* msg, char* msgError, int reintentos, char* input) {
@@ -171,7 +171,7 @@ int utn_getCUIT(char* msg, char* msgError, int reintentos, char* input) {
 }
 
 /**
-* \brief Recibe un string y verifica que estÈ en el rango numerico del teclado (0-9) y pueda contener guion: -
+* \brief Recibe un string y verifica que est√© en el rango numerico del teclado (0-9) y pueda contener guion: -
 * \param stringRecibido string a verificar
 * \return 0 si el string esta en el rango establecido
 */
@@ -219,10 +219,10 @@ int isValidCUIT(char* stringRecibido) {
 * \brief Solicita un texto al usuario y lo devuelve
 * \param msg Mensaje a ser mostrado
 * \param msgError Mensaje a ser mostrado en caso de error
-* \param minSize Cantidad minima de elementos que recibir· el string
-* \param maxSize Cantidad m·xima de elementos que recibir· el string
-* \param reintentos Cantidad de reintentos que el usuario tendr·
-* \param input Array donde se cargar· el texto ingresado
+* \param minSize Cantidad minima de elementos que recibir√° el string
+* \param maxSize Cantidad m√°xima de elementos que recibir√° el string
+* \param reintentos Cantidad de reintentos que el usuario tendr√°
+* \param input Array donde se cargar√° el texto ingresado
 * \return 0 si el texto es un texto valido
 */
 int utn_getText(char* msg, char* msgError, int minSize, int maxSize, int reintentos, char* input) {
@@ -248,7 +248,7 @@ int utn_getText(char* msg, char* msgError, int minSize, int maxSize, int reinten
 }
 
 /**
-* \brief Recibe un string y verifica que estÈ en un rango del teclado ("" o > z)
+* \brief Recibe un string y verifica que est√© en un rango del teclado ("" o > z)
 * \param stringRecibido string a verificar
 * \return 0 si el string esta en un rango valido ("" o > z)
 */
@@ -268,10 +268,10 @@ int isValidText(char* stringRecibido) {
 * \brief Solicita un texto al usuario y lo devuelve
 * \param msg Mensaje a ser mostrado
 * \param msgError Mensaje a ser mostrado en caso de error
-* \param min Cantidad minima de elementos que recibir· el string
-* \param max Cantidad m·xima de elementos que recibir· el string
-* \param reintentos Cantidad de reintentos que el usuario tendr·
-* \param resultado Array donde se cargar· el texto ingresado
+* \param min Cantidad minima de elementos que recibir√° el string
+* \param max Cantidad m√°xima de elementos que recibir√° el string
+* \param reintentos Cantidad de reintentos que el usuario tendr√°
+* \param resultado Array donde se cargar√° el texto ingresado
 * \return 0 si el texto es un texto valido
 */
 int utn_getChar(char* msg, char* msgError, int min, int max, int reintentos, char* resultado) {
@@ -298,7 +298,7 @@ int utn_getChar(char* msg, char* msgError, int min, int max, int reintentos, cha
 }
 
 /**
-* \brief Recibe un string y verifica que estÈ en un rango del teclado (A-Z, a-z)
+* \brief Recibe un string y verifica que est√© en un rango del teclado (A-Z, a-z)
 * \param stringRecibido string a verificar
 * \return 0 si el string esta en un rango valido (A-Z, a-z)
 */

@@ -3,6 +3,8 @@
 #include "LinkedList.h"
 #include "Controller.h"
 #include "Employee.h"
+#include "utn.h"
+#include "parser.h"
 
 /****************************************************
     Menu:
@@ -18,17 +20,54 @@
     10. Salir
 *****************************************************/
 
-
-int main()
-{
+int main() {
     int option = 0;
+
     LinkedList* listaEmpleados = ll_newLinkedList();
     do{
-        switch(option)
-        {
+    	printf("/****************************************************\
+    	    	  \nMenu:\
+    	    	  \n1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).\
+    	    	  \n2. Cargar los datos de los empleados desde el archivo data.csv (modo binario).\
+    	    	  \n\n3. Alta de empleado\
+    	    	  \n4. Modificar datos de empleado\
+    	    	  \n5. Baja de empleado\
+    	    	  \n6. Listar empleados\
+    	    	  \n7. Ordenar empleados\
+    	    	  \n\n8. Guardar los datos de los empleados en el archivo data.csv (modo texto).\
+    	    	  \n9. Guardar los datos de los empleados en el archivo data.csv (modo binario).\
+    	    	  \n\n10. Salir\
+    	    	  \n*****************************************************/");
+
+    	    	  utn_getUnsignedInt("\nSeleccione opcion: ","Opcion invalida",1,sizeof(int),1,11,1,&option);
+        switch(option) {
             case 1:
                 controller_loadFromText("data.csv",listaEmpleados);
+                controller_lastIdEmployee(listaEmpleados);
                 break;
+            case 2:
+            	controller_loadFromBinary("data.bin",listaEmpleados);
+            	controller_lastIdEmployee(listaEmpleados);
+            	break;
+            case 3:
+            	controller_addEmployee(listaEmpleados);
+            	break;
+            case 4:
+            	controller_editEmployee(listaEmpleados);
+            	break;
+            case 5:
+            	controller_removeEmployee(listaEmpleados);
+                break;
+            case 6:
+            	controller_ListEmployee(listaEmpleados);
+                break;
+            case 7:
+            	break;
+            case 8:
+            	break;
+            case 9:
+            	break;
+
         }
     }while(option != 10);
     return 0;
