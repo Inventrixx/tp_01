@@ -76,6 +76,7 @@ int controller_lastIdEmployee(LinkedList* pArrayListEmployee) {
  *
  */
 
+
 int controller_searchEmployeeById(LinkedList* pArrayListEmployee, int id, int* index) {
 	int ret = -1;
 	Employee* auxEmployee;
@@ -103,6 +104,7 @@ int controller_searchEmployeeById(LinkedList* pArrayListEmployee, int id, int* i
  * \return int
  *
  */
+
 int controller_addEmployee(LinkedList* pArrayListEmployee) {
   int ret = -1;
   char auxNombre[128];
@@ -131,8 +133,10 @@ int controller_addEmployee(LinkedList* pArrayListEmployee) {
  * \return int
  *
  */
+
 int controller_editEmployee(LinkedList* pArrayListEmployee) {
 	int ret = -1;
+
 	if(pArrayListEmployee != NULL) {
 		if(ll_len(pArrayListEmployee)) {
 			char auxNombre[128];
@@ -142,11 +146,14 @@ int controller_editEmployee(LinkedList* pArrayListEmployee) {
 			int option;
 			int auxIndex;
 			int auxId;
-			if(utn_getUnsignedInt("Ingrese el Id del empleado a modificar: ", "Error. Ingrese un Id valido: ", 1, 5, 0, 10000, 2, &auxId) == 0 && controller_searchEmployeeById(pArrayListEmployee, auxId, &auxIndex)) {
+
+			utn_getUnsignedInt("Ingrese el Id del empleado a modificar: ", "Error. Ingrese un Id valido: ", 1, 5, 1, 10000, 2, &auxId);
+			if(controller_searchEmployeeById(pArrayListEmployee, auxId, &auxIndex) == 0) {
 				do {
+					controller_PrintEmployee(pArrayListEmployee, auxIndex);
 					auxEmployee = (Employee*)ll_get(pArrayListEmployee, auxIndex);
 
-					utn_getUnsignedInt("Ingrese el Id del empleado: ", "Error. Ingrese un Id valido: ", 1, 5, 0, 10000, 2, &option);
+					utn_getUnsignedInt("\nModificar: 1(Nombre) 2(Horas Trabajadas) 3(Sueldo) 4(salir)", "Error. Ingrese una opción valida: ", 1, sizeof(int), 1, 4, 2, &option);
 
 					switch(option) {
 						case 1:
@@ -165,31 +172,44 @@ int controller_editEmployee(LinkedList* pArrayListEmployee) {
 							}
 							break;
 						case 4:
-							printf("Saliendo...");
 							break;
-					}
+						}
 				} while(option != 4);
 				ret = 0;
 			} else {
 				printf("Id invalido");
-			}
+				}
 		} else {
 			printf("No existen registros cargados");
-		}
+			}
 	}
-    return ret;
+	return ret;
 }
 
 /** \brief Baja de empleado
- *
- * \param path char*
- * \param pArrayListEmployee LinkedList*
- * \return int
- *
- */
-int controller_removeEmployee(LinkedList* pArrayListEmployee)
-{
-    return 1;
+*
+* \param path char*
+* \param pArrayListEmployee LinkedList*
+* \return int
+*
+*/
+
+int controller_removeEmployee(LinkedList* pArrayListEmployee) {
+	int ret = -1;
+	if(pArrayListEmployee != NULL) {
+			if(ll_len(pArrayListEmployee) > 0) {
+				Employee* auxEmployee;
+				int option;
+				int auxIndex;
+				int auxId;
+
+				utn_getUnsignedInt("\nId a cancelar: ","\nError, ingrese un Id valido",1,5,1,10000,1,&auxId);
+
+				if(controller_searchEmployeeById(pArrayListEmployee, auxId, &auxIndex) == 0) {
+			}
+	}
+
+	return ret;
 }
 
 /** \brief Listar empleados
@@ -201,22 +221,12 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_ListEmployee(LinkedList* pArrayListEmployee) {
 	int ret = -1;
-	Employee* auxEmployee;
-	int auxId;
-	char auxNombre[4096];
-	int auxHorasTrabajadas;
-	int auxSueldo;
 	int i, len;
 	if(pArrayListEmployee != NULL) {
 		if(ll_len(pArrayListEmployee) > 0) {
 			len = ll_len(pArrayListEmployee);
 			for(i = 0; i < len; i++) {
-				auxEmployee = ll_get(pArrayListEmployee, i);
-				employee_getId(auxEmployee, &auxId);
-				employee_getNombre(auxEmployee, auxNombre);
-				employee_getHorasTrabajadas(auxEmployee, &auxHorasTrabajadas);
-				employee_getSueldo(auxEmployee, &auxSueldo);
-				printf("ID: %d\n1.Nombre: %s\n2.Horas trabajadas: %d\n3.Sueldo: %d\n", auxId,auxNombre,auxHorasTrabajadas,auxSueldo);
+				controller_PrintEmployee(pArrayListEmployee, i);
 			}
 			ret = 0;
 		} else {
@@ -224,8 +234,29 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee) {
 		}
 		return ret;
 	}
-    return ret;
+	return ret;
 }
+
+int controller_PrintEmployee(LinkedList* pArrayListEmployee, int index) {
+	int ret = -1;
+	Employee* auxEmployee;
+	int auxId;
+	char auxNombre[4096];
+	int auxHorasTrabajadas;
+	int auxSueldo;
+
+	if(pArrayListEmployee != NULL) {
+		auxEmployee = ll_get(pArrayListEmployee, index);
+		employee_getId(auxEmployee, &auxId);
+		employee_getNombre(auxEmployee, auxNombre);
+		employee_getHorasTrabajadas(auxEmployee, &auxHorasTrabajadas);
+		employee_getSueldo(auxEmployee, &auxSueldo);
+		printf("ID: %d\n1.Nombre: %s\n2.Horas trabajadas: %d\n3.Sueldo: %d\n", auxId,auxNombre,auxHorasTrabajadas,auxSueldo);
+		ret = 0;
+	}
+	return ret;
+}
+
 
 /** \brief Ordenar empleados
  *
@@ -258,6 +289,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
  * \return int
  *
  */
+
 int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 {
     return 1;
