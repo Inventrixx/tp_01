@@ -199,16 +199,23 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee) {
 	if(pArrayListEmployee != NULL) {
 			if(ll_len(pArrayListEmployee) > 0) {
 				Employee* auxEmployee;
-				int option;
 				int auxIndex;
 				int auxId;
 
 				utn_getUnsignedInt("\nId a cancelar: ","\nError, ingrese un Id valido",1,5,1,10000,1,&auxId);
 
 				if(controller_searchEmployeeById(pArrayListEmployee, auxId, &auxIndex) == 0) {
+					auxEmployee = (Employee*)ll_get(pArrayListEmployee, auxIndex);
+					employee_delete(auxEmployee);
+					ll_remove(pArrayListEmployee, auxIndex);
+					ret = 0;
+				} else {
+					printf("Id invalido");
+				}
+			} else {
+				printf("No existen registros cargados");
 			}
 	}
-
 	return ret;
 }
 
