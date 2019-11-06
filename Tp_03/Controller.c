@@ -145,8 +145,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee) {
 			if(utn_getUnsignedInt("Ingrese el Id del empleado a modificar: ", "Error. Ingrese un Id valido: ", 1, 5, 0, 10000, 2, &auxId) == 0 && controller_searchEmployeeById(pArrayListEmployee, auxId, &auxIndex)) {
 				do {
 					auxEmployee = (Employee*)ll_get(pArrayListEmployee, auxIndex);
-					controller_ListEmployee(pArrayListEmployee, auxIndex);
-					printf("4. Salir");
+
 					utn_getUnsignedInt("Ingrese el Id del empleado: ", "Error. Ingrese un Id valido: ", 1, 5, 0, 10000, 2, &option);
 
 					switch(option) {
@@ -161,9 +160,12 @@ int controller_editEmployee(LinkedList* pArrayListEmployee) {
 							}
 							break;
 						case 3:
-							if(tn_getUnsignedInt("Ingrese el sueldo: ", "Error. Ingrese un valor valido: ", 1, 10, 1, 50000, 2, &auxSueldo) == 0) {
+							if(utn_getUnsignedInt("Ingrese el sueldo: ", "Error. Ingrese un valor valido: ", 1, 10, 1, 50000, 2, &auxSueldo) == 0) {
 								employee_setSueldo(auxEmployee, auxSueldo);
 							}
+							break;
+						case 4:
+							printf("Saliendo...");
 							break;
 					}
 				} while(option != 4);
