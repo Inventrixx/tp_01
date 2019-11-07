@@ -1,0 +1,32 @@
+!SESSION 2019-11-06 20:26:22.862 -----------------------------------------------
+eclipse.buildId=4.12.0.I20190605-1800
+java.version=1.8.0_111
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=es_AR
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -data /home/alumno/Ale/tp_01/Tp_03 -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.egit.core 1 0 2019-11-06 20:26:24.790
+!MESSAGE Using Apache MINA sshd as ssh client.
+
+!ENTRY org.eclipse.launchbar.core 2 0 2019-11-06 20:26:27.738
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2019-11-06 20:26:27.739
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType
+!SESSION 2019-11-06 20:27:12.420 -----------------------------------------------
+eclipse.buildId=4.12.0.I20190605-1800
+java.version=1.8.0_111
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=es_AR
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.egit.core 1 0 2019-11-06 20:28:29.568
+!MESSAGE Using Apache MINA sshd as ssh client.
+
+!ENTRY org.eclipse.launchbar.core 2 0 2019-11-06 20:28:32.283
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2019-11-06 20:28:32.283
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType
