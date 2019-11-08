@@ -265,6 +265,7 @@ int controller_PrintEmployee(LinkedList* pArrayListEmployee, int index) {
 }
 
 
+
 /** \brief Ordenar empleados
  *
  * \param path char*
@@ -272,9 +273,18 @@ int controller_PrintEmployee(LinkedList* pArrayListEmployee, int index) {
  * \return int
  *
  */
-int controller_sortEmployee(LinkedList* pArrayListEmployee)
-{
-    return 1;
+int controller_sortEmployee(LinkedList* pArrayListEmployee) {
+    int ret = -1;
+    if(pArrayListEmployee != NULL) {
+    	if(ll_len(pArrayListEmployee) > 0) {
+    		ll_sort(pArrayListEmployee,employee_compareNombre,-1);
+    	}
+    		ret = 0;
+    		printf("Operacion completada");
+    	} else {
+    		printf("No hay registros cargados");
+    	}
+    return ret;
 }
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo texto).
@@ -284,9 +294,31 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
  * \return int
  *
  */
-int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
-{
-    return 1;
+int controller_saveAsText(char* path , LinkedList* pArrayListEmployee) {
+    int ret = 0;
+	Employee* auxEmployee;
+    FILE* pf;
+    int auxId;
+    char auxNombre[4096];
+    int auxHorasTrabajadas;
+    int auxSueldo;
+    int i, len;
+    pf = fopen(path, "w");
+    if(pArrayListEmployee != NULL && pf != NULL) {
+    	fprintf(pf,"id,nombre,horasTrabajadas,sueldo\n");
+    	len = ll_len(pArrayListEmployee);
+    	for(i = 0; i < len; i++) {
+    		auxEmployee = (Employee*)ll_get(pArrayListEmployee, i);
+    		employee_getId(auxEmployee, &auxId);
+    		employee_getNombre(auxEmployee, auxNombre);
+    		employee_getHorasTrabajadas(auxEmployee, &auxHorasTrabajadas);
+    		employee_getSueldo(auxEmployee, &auxSueldo);
+    		fprintf(pf,"%d,%s,%d,%d\n", auxId, auxNombre, auxHorasTrabajadas, auxSueldo);
+    		ret++;
+    	}
+    	fclose(pf);
+    }
+    return ret;
 }
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo binario).
@@ -297,7 +329,21 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
  *
  */
 
-int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
-{
-    return 1;
+int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee) {
+	int ret = 0;
+	Employee* auxEmployee;
+	FILE* pf;
+	int i, len;
+	pf = fopen(path, "wb");
+
+	if(pArrayListEmployee != NULL && pf != NULL) {
+		len = ll_len(pArrayListEmployee);
+		for(i = 0; i < len; i++) {
+			auxEmployee = (Employee*)ll_get(pArrayListEmployee, i);
+			fwrite(auxEmployee, sizeof(Employee), 1, pf);
+			ret++;
+		}
+		fclose(pf);
+	}
+	return ret;
 }
