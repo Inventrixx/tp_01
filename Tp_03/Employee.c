@@ -159,3 +159,15 @@ int employee_getSueldo(Employee* this,int* sueldo) {
   }
   return ret;
 }
+
+
+int employee_compareNombre(void* pEmployeeA,void* pEmployeeB) {
+    int ret = 0;
+    if(strcmp(((Employee*)pEmployeeA)->nombre,((Employee*)pEmployeeB)->nombre) > 0) {
+        ret = 1;
+    }
+    if(strcmp(((Employee*)pEmployeeA)->nombre,((Employee*)pEmployeeB)->nombre) < 0) {
+        ret = -1;
+    }
+    return ret;
+}
