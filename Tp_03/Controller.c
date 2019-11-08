@@ -277,7 +277,7 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee) {
     int ret = -1;
     if(pArrayListEmployee != NULL) {
     	if(ll_len(pArrayListEmployee) > 0) {
-    		ll_sort(pArrayListEmployee,employee_compareNombre,-1);
+    		ll_sort(pArrayListEmployee,employee_compareNombre,1);
     	}
     		ret = 0;
     		printf("Operacion completada");
