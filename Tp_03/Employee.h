@@ -30,4 +30,7 @@ int employee_setSueldoStr(Employee* this,char* sueldoStr);
 int employee_setSueldo(Employee* this,int sueldo);
 int employee_getSueldo(Employee* this,int* sueldo);
 
+int employee_compareNombre(void* pEmployeeA,void* pEmployeeB);
+int employee_compareHorasTrabajadas(void* pEmployeeA,void* pEmployeeB);
+
 #endif // employee_H_INCLUDED
