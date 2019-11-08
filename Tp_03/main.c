@@ -62,10 +62,13 @@ int main() {
             	controller_ListEmployee(listaEmpleados);
                 break;
             case 7:
+                controller_sortEmployee(listaEmpleados);
             	break;
             case 8:
+                controller_saveAsText("data.csv", listaEmpleados);
             	break;
             case 9:
+                controller_saveAsBinary("data.bin" , listaEmpleados);
             	break;
 
         }
