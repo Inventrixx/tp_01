@@ -275,9 +275,20 @@ int controller_PrintEmployee(LinkedList* pArrayListEmployee, int index) {
  */
 int controller_sortEmployee(LinkedList* pArrayListEmployee) {
     int ret = -1;
+    int option;
     if(pArrayListEmployee != NULL) {
     	if(ll_len(pArrayListEmployee) > 0) {
-    		ll_sort(pArrayListEmployee,employee_compareNombre,1);
+    		utn_getUnsignedInt("\nSeleccione el criterio de ordenamiento deseado:\n 1- Ascendente\n 2- Descendente\n","Opcion invalida",1,sizeof(int),1,11,1,&option);
+    		switch(option) {
+    			case 1:
+				ll_sort(pArrayListEmployee,employee_compareNombre,1);
+				break;
+    			case 2:
+    				ll_sort(pArrayListEmployee,employee_compareNombre,0);
+    				break;
+    			default:
+    				printf("Opción invalida");
+    		}
     	}
     		ret = 0;
     		printf("Operacion completada");
