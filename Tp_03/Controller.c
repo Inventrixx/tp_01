@@ -202,7 +202,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee) {
 				int auxIndex;
 				int auxId;
 
-				utn_getUnsignedInt("\nId a cancelar: ","\nError, ingrese un Id valido",1,5,1,10000,1,&auxId);
+				utn_getUnsignedInt("\nId a cancelar: ","\nError, ingrese un Id valido",1,10,1,10000,1,&auxId);
 
 				if(controller_searchEmployeeById(pArrayListEmployee, auxId, &auxIndex) == 0) {
 					auxEmployee = (Employee*)ll_get(pArrayListEmployee, auxIndex);
