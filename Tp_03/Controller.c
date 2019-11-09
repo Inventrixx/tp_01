@@ -147,7 +147,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee) {
 			int auxIndex;
 			int auxId;
 
-			utn_getUnsignedInt("Ingrese el Id del empleado a modificar: ", "Error. Ingrese un Id valido: ", 1, 5, 1, 10000, 2, &auxId);
+			utn_getUnsignedInt("Ingrese el Id del empleado a modificar: ", "Error. Ingrese un Id valido: ", 1, 10, 1, 10000, 2, &auxId);
 			if(controller_searchEmployeeById(pArrayListEmployee, auxId, &auxIndex) == 0) {
 				do {
 					controller_PrintEmployee(pArrayListEmployee, auxIndex);
