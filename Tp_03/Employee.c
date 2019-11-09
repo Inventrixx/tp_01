@@ -90,7 +90,6 @@ int employee_getNombre(Employee* this,char* nombre) {
     int ret = -1;
     if(this != NULL && nombre != NULL) {
       strcpy(nombre,this->nombre);
-      *nombre = this->id;
       ret = 0;
     }
     return ret;
